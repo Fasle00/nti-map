@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NTI MAP</title>
+    <style>
+
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        svg {
+            /* margin-inline: auto; */
+            width: 100%;
+            height: auto;
+            max-height:100%;
+            stroke: #333;
+            border: 1px solid;
+        }
+
+        .klassrum {
+            fill: #ccc;
+            stroke: #333333;
+            stroke-width: 1;
+            cursor: pointer;
+            transition: fill 0.8s;
+        }
+
+        .toa {
+            fill: green;
+            stroke-width: 1;
+            cursor: pointer;
+            transition: fill 0.8s;
+        }
+
+        .korridor {
+            fill: red;
+            stroke-width: 1;
+            cursor: pointer;
+            transition: fill 0.8s;
+        }
+
+        .klassrum:hover {
+            stroke: #3c3;
+            stroke-dasharray: 3;
+            animation: svg-animation 5s infinite linear;
+        }
+
+        @keyframes svg-animation {
+            0% {
+                fill: #535cda;
+                stroke-dashoffset: 0;
+            }
+            30% {
+                fill: #222fff;
+            }
+            80% {
+                fill: #666;
+            }
+            100% {
+                fill: #535cda;
+                stroke-dashoffset: 12;
+            }
+        }
+
+        .tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.5);
+
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 4px;
+            pointer-events: none;
+            display: none;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- SVG-karta -->
+    <!-- Klistra in din SVG-karta här och se till att varje klassrum har en klass "klassrum" och ett unikt
+    id -->
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230 290">
+        <rect x="10" y="10" width="210" height="275" fill="#c3c" stroke="red" />
+        <defs>
+            <radialGradient id="myGradient">
+                <stop offset="0%" stop-color="red" />
+                <stop offset="20%" stop-color="black" />
+                <stop offset="50%" stop-color="green" />
+                <stop offset="100%" stop-color="black" />
+            </radialGradient>
+        </defs>
+        <defs>
+            <radialGradient id="myGradient2">
+                <stop offset="0%" stop-color="red" />
+                <stop offset="20%" stop-color="white" />
+                <stop offset="50%" stop-color="green" />
+                <stop offset="100%" stop-color="white" />
+            </radialGradient>
+        </defs>
+
+        <path id="Elev_ingång" class="korridor klassrum" d="M170 35h20v125h15v60h-7v-45h-33v20h-10v-20h-10v-40v75h-40v-25h20v-60h52v5v-80h-7v-15z" />
+        <path id="Lärar_ingång" class="korridor klassrum" d="M90 235h65v-20h65v20h-15v20h-145h20v10h-30v-10h-15v-40h8v-5h7v5h10v30h30v-10z" />
+
+        <path class="toa klassrum" id="Toalett_atena" d="M155 35h15v8h-15h15v7h-15v-15z"/>
+        <path class="toa klassrum" id="Toalett_Elev_ingång" d="M 165 175h33v10h-8v-10v10h-8v-10v10h-9v-10v10h-8v-10z"/>
+        <path class="toa klassrum" id="Toalett_Lärar_ingång" d="M90 215h25v20h-10v-11h10h-10v-9v20h-5v-11h-10h10v-9v20h-10v-20z" />
+        <rect class="toa klassrum" x="165" y="185" width="15" height="10" id="Toalett_rullstol_elev" />
+        <rect class="toa klassrum" x="40" y="255" width="10" height="10" id="Toalett_rullstol_lärar" />
+
+        <path class="klassrum" d="M155 10h30v25h-30v-25Z" id="Pythagoras" />
+        <path class="klassrum" d="M185 10h35v50h-30v-25h-5v-25 Z" id="Atena" />
+        <path class="klassrum" d="M205 250h15v35h-35v-30h20v-5z" id="Sapfo" />
+        <rect class="klassrum" x="35" y="185" width="70" height="25" id="ALC" />
+        <rect class="klassrum" x="45" y="265" width="20" height="20" id="Zeus" />
+        <rect class="klassrum" x="80" y="255" width="15" height="30" id="Kemiföråd" />
+        <rect class="klassrum" x="95" y="255" width="35" height="30" id="Arkimedes" />
+        <rect class="klassrum" x="65" y="265" width="15" height="20" id="Hippokrates" />
+        <rect class="klassrum" x="125" y="85" width="20" height="40" id="Nyx" />
+        <rect class="klassrum" x="190" y="60" width="30" height="50" id="Troja" />
+        <rect class="klassrum" x="145" y="85" width="32" height="20" id="Sokrates" />
+        <rect class="klassrum" x="125" y="50" width="52" height="35" id="Ariståteles" />
+        <rect class="klassrum" x="205" y="235" width="15" height="15" id="Hera" />
+        <rect class="klassrum" x="130" y="255" width="25" height="30" id="Pheme" />
+        <rect class="klassrum" x="205" y="170" width="15" height="40" id="Helios" />
+        <rect class="klassrum" x="155" y="255" width="30" height="30" id="Hermes" />
+        <rect class="klassrum" x="190" y="110" width="30" height="50" id="Platon" />
+        <rect class="klassrum" x="205" y="160" width="15" height="10" id="Akilles" />
+
+        <path class="klassrum" d="M10 210h25v45h5v10h5v20h-35v-75z" id="Olympen" />
+        <rect class="klassrum" x="10" y="185" width="25" height="25" id="Styx" />
+        <rect class="klassrum" x="145" y="175" width="10" height="5" id="Idrottsföråd" />
+        <rect class="klassrum" x="105" y="210" width="20" height="5" id="Elevkök" />
+        <rect class="klassrum" x="145" y="215" width="10" height="20" id="Server_rum" />
+        <rect class="klassrum" x="125" y="215" width="20" height="20" id="Gaia" />
+        <rect class="klassrum" x="115" y="215" width="10" height="20" id="Kopieringsrum" />
+        <rect class="klassrum" x="180" y="185" width="18" height="10" id="Städ" />
+        <rect class="klassrum" x="145" y="105" width="32" height="20" id="Nike" />
+    </svg>
+    <!-- Tooltip -->
+    <div class="tooltip" id="tooltip"></div>
+    <script>
+        // JavaScript för interaktivitet
+        const klassrums = document.querySelectorAll(".klassrum ");
+        const tooltip = document.getElementById("tooltip");
+        const debugging = document.getElementById("debugging");
+        
+        klassrums.forEach(klassrum => {
+            klassrum.addEventListener("mouseover", (e) => {
+                const klassrumName = klassrum.id.replaceAll("_", " ").toUpperCase();
+                tooltip.style.display = "block";
+                tooltip.textContent = klassrumName;
+            });
+            klassrum.addEventListener("mousemove", (e) => {
+                if (e.pageX > window.innerWidth - 100) {
+                    tooltip.style.left = (window.innerWidth - 110) + "px";
+                } else {
+                    tooltip.style.left = (e.pageX - 10) + "px";
+                }
+                tooltip.style.top = (e.pageY + 20) + "px";
+            });
+            klassrum.addEventListener("mouseout", () => {
+                tooltip.style.display = "none";
+            });
+            klassrum.addEventListener("click", () => {
+                alert("Du klickade på " + klassrum.id.replace("_", " ").toUpperCase());
+                // Här kan ni lägga till mer avancerad funktionalitet, som att visa information i en sidopanel
+            });
+        });
+    </script>
+</body>
+
+</html>
