@@ -9,37 +9,43 @@
 
         body {
             margin: 0;
-            overflow: hidden;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding-inline:calc(1rem);
+            
         }
         svg {
             /* margin-inline: auto; */
-            width: 100%;
-            height: auto;
-            max-height:100%;
+            /* width: calc(100vw - 4rem - 60px); */
+            max-height: calc(100vh - 4rem - 60px);
+            /* max-height:100%; */
             stroke: #333;
-            border: 1px solid;
+            border: 2px solid #333;
+            box-shadow: 
+                0px 0px 1rem 1rem #faa, 
+                0px 0px 1rem 2rem #afa,
+                0px 0px 1rem 3rem #aaf,
+                0px 0px 150px 30vw #aaa;
+            border-radius: max(1rem, 2vmin);
         }
 
         .klassrum {
             fill: #ccc;
-            stroke: #333333;
+            stroke: #333;
             stroke-width: 1;
             cursor: pointer;
-            transition: fill 0.8s;
+            /* transition: fill 0.8s; */
         }
 
         .toa {
             fill: green;
-            stroke-width: 1;
-            cursor: pointer;
-            transition: fill 0.8s;
         }
 
         .korridor {
             fill: red;
-            stroke-width: 1;
-            cursor: pointer;
-            transition: fill 0.8s;
         }
 
         .klassrum:hover {
@@ -83,8 +89,8 @@
     <!-- SVG-karta -->
     <!-- Klistra in din SVG-karta här och se till att varje klassrum har en klass "klassrum" och ett unikt
     id -->
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230 290">
-        <rect x="10" y="10" width="210" height="275" fill="#c3c" stroke="red" />
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230 295">
+        <rect x="10" y="10" width="210" height="275" fill="#c3c" stroke="#333" stroke-width="1"/>
         <defs>
             <radialGradient id="myGradient">
                 <stop offset="0%" stop-color="red" />
